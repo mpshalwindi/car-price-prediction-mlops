@@ -1,0 +1,5 @@
+.ipynb_checkpoints/
+*.amltmp
+__pycache__/
+*.pyc
+.env

@@ -1,0 +1,39 @@
+name: Azure ML Pipeline
+on:
+  push:
+    branches: [main]
+
+jobs:
+  execute-pipeline:
+    runs-on: ubuntu-latest
+<<<<<<< HEAD
+=======
+    permissions:
+      id-token: write
+      contents: read
+>>>>>>> origin/main
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install azure-ai-ml azure-identity
+          
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+          
+      - name: Execute Pipeline
+        run: |
+          CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} python scripts/trigger_pipeline.py
+        env:
+          RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+          WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
