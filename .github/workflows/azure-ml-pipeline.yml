@@ -28,7 +28,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           
       - name: Debug Environment Variables
         run: |
