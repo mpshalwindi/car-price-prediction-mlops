@@ -4,3 +4,4 @@
 # Testing with correct Azure credentials
 # Testing correct workflow
 # Testing with valid JSON credentials
+# Testing Azure credentials
