@@ -5,3 +5,4 @@
 # Testing correct workflow
 # Testing with valid JSON credentials
 # Testing Azure credentials
+# Testing with new service principal
