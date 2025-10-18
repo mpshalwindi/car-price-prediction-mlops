@@ -8,3 +8,5 @@
 # Testing with new service principal
 # Testing with new service principal
 # Testing with auto-generated JSON
+# Testing after role assignment
+# Testing after role assignment
