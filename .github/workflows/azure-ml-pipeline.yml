@@ -10,6 +10,7 @@ jobs:
       SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
       RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
       WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,10 +24,13 @@ jobs:
         run: |
           pip install azure-ai-ml azure-identity
           
-      - name: Azure Login with Managed Identity
-        run: |
-          az login --identity
-          az account set --subscription $SUBSCRIPTION_ID
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           
       - name: Debug Environment Variables
         run: |
